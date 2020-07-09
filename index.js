@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const Joi = require('joi');
+const Joi = require('@hapi/joi');
 app.use(express.json());
 
 const fruits = [
@@ -10,13 +10,19 @@ const fruits = [
   {name: 'Orange', id: 1}
 ]
 
-app.get('/api/fruits/:id', (req,res) => {
+app.get('/', (req,res) => {
   res.send('Returning this line of code');
+});
 
-})
+app.get('/api/fruits', (req,res) => {
+  res.send(fruits);
+});
 
 app.get('/api/fruits/:id', (req,res) => {
-  const fruit = fruits.find(c => c.id === partInt(req.params.id));
+  const fruit = fruits.find(c => c.id === parseInt(req.params.id));
   if(!fruit)res.status(404).send('fruit not found');
   res.send(fruit);
 });
+
+const port = process.env.PORT || 5001;
+  app.listen(port, () => console.log(`listening on port ${port}...`));
