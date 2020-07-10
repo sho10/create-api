@@ -40,6 +40,29 @@ fruits.push(fruit);
 res.send(fruit);
 });
 
+
+app.put('/api/fruits/:id', (req,res) => {
+const fruit = fruits.find(c => c.id === parseInt(req.params.id));
+if (!fruit) res.status(404).send('Fruit Not Found');
+
+const { error } = validateFruit(req.body);
+if (error) {
+res.status(400).send(error.details[0].message);
+return;
+}
+fruit.name = req.body.name;
+res.send(fruit);
+});
+
+app.delete('/api/fruits/:id', (req,res) => {
+const fruit = fruits.find(c => c.id === parseInt(req.params.id));
+if (!fruit)res.status(404).send('fruit not found');
+const index = fruits.indexOf(fruit);
+fruits.splice(index,1);
+res.send(fruit);
+});
+
+
 function validateFruit(fruit) {
   const schema = Joi.object({ name: Joi.string() .min(3) .required() });
   const validation = schema.validate(fruit);
