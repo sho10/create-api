@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const Joi = require('@hapi/joi');
+const mongoose = require('mongoose')
 app.use(express.json());
 
 const fruits = [
