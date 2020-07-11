@@ -1,3 +1,10 @@
 listening on port 3000. Time1594452621560
 GET method called. Time1594452640629
 GET method called. Time1594452641378
+listening on port 3000. Time1594453558273
+GET method called. Time1594453575222
+listening on port 3000. Time1594453627521
+GET method called. Time1594453632908
+listening on port 3000. Time1594453690691
+GET method called. Time1594453695144
+GET method called. Time1594453695944
