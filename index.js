@@ -12,6 +12,10 @@ const fruits = [
 ]
 
 app.get('/', (req,res) => {
+  res.send( {name:"Apples", id:1});
+});
+
+app.get('/', (req,res) => {
   res.send('Returning this line of code');
 });
 
@@ -77,5 +81,5 @@ function validateFruit(fruit) {
 //   return Joi.validate(fruit, schema);
 // }
 
-const port = process.env.PORT || 5001;
+const port = process.env.PORT || 3000;
   app.listen(port, () => console.log(`listening on port ${port}...`));
