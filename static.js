@@ -14,6 +14,24 @@ var customerList = {
     cust3:{"name":"Cust3","ID":"3"}
 };
 
+app.get('/customer/:customerId', (req,res) => {
+    var customerName;
+    for(index in customerList){
+        if(customerList[index].ID == req.params.customerId){
+            customerName = customerList[index].name;
+        }
+    }
+    if(customerName!=undefined){
+        res.send('Customer ID:'+req.params.customerId+' has a name:'+customerName);
+    }else{
+        res.send('Customer ID:'+req.params.customerId+' does not exist');
+    }
+})
+
+app.get('/customers', (req,res) => {
+   res.send(customerList);
+})
+
 app.post('/welcome', (req,res) => {
   res.send('You called POST');
 })
